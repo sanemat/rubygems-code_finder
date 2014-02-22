@@ -8,4 +8,10 @@ describe Rubygems::CodeFinder do
 
     expect(Rubygems::CodeFinder.url('tachikoma')).to eq 'https://github.com/sanemat/tachikoma'
   end
+
+  it 'fails gem not found' do
+    stub_request(:get, 'https://rubygems.org/api/v1/gems/invalid.json').
+      to_return(status: 404, body: '', headers: {})
+    expect { Rubygems::CodeFinder.url('invalid') }.to raise_error(Rubygems::CodeFinder::RubygemsNotFound)
+  end
 end
