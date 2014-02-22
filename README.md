@@ -21,7 +21,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+[3] pry(main)> Rubygems::CodeFinder.url 'tachikoma'
+=> "https://github.com/sanemat/tachikoma"
+[4] pry(main)> Rubygems::CodeFinder.url 'invalid'
+Rubygems::CodeFinder::RubygemsNotFound: Rubygems::CodeFinder::RubygemsNotFound
+from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:15:in `url'
+[5] pry(main)> Rubygems::CodeFinder.url 'mm-devise'
+=> "http://github.com/kristianmandrup/mm-devise"
+[6] pry(main)> Rubygems::CodeFinder.url 'fluentd'
+Rubygems::CodeFinder::RepositoryNotFound: Rubygems::CodeFinder::RepositoryNotFound
+from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:23:in `parse_response_body'
+```
 
 ## Contributing
 
