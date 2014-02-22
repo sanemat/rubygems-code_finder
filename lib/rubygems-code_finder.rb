@@ -2,6 +2,7 @@ require 'rubygems/code_finder/version'
 require 'faraday'
 require 'multi_json'
 require 'uri'
+require 'octokit'
 
 module Rubygems
   module CodeFinder
