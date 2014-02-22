@@ -14,4 +14,11 @@ describe Rubygems::CodeFinder do
       to_return(status: 404, body: '', headers: {})
     expect { Rubygems::CodeFinder.url('invalid') }.to raise_error(Rubygems::CodeFinder::RubygemsNotFound)
   end
+
+  it 'returns homepage_uri' do
+    stub_request(:get, 'https://rubygems.org/api/v1/gems/mm-devise.json').
+      to_return(status: 200, body: File.new('./spec/fixtures/mm-devise.json'), headers: {})
+
+    expect(Rubygems::CodeFinder.url('mm-devise')).to eq 'http://github.com/kristianmandrup/mm-devise'
+  end
 end
