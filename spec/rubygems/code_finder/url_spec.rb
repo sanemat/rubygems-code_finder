@@ -22,10 +22,15 @@ describe Rubygems::CodeFinder do
     expect(Rubygems::CodeFinder.url('mm-devise')).to eq 'http://github.com/kristianmandrup/mm-devise'
   end
 
-  it 'fails repository not found' do
+  it 'returns github search response' do
     stub_request(:get, 'https://rubygems.org/api/v1/gems/fluentd.json').
       to_return(status: 200, body: File.new('./spec/fixtures/fluentd.json'), headers: {})
+    stub_request(:get, 'https://api.github.com/search/repositories?q=fluentd').
+      with(:headers => {'Accept'=>'application/vnd.github.beta+json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Octokit Ruby Gem 2.7.1'}).
+      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=fluentd'), headers: {})
 
-    expect { Rubygems::CodeFinder.url('fluentd') }.to raise_error(Rubygems::CodeFinder::RepositoryNotFound)
+    expect(Rubygems::CodeFinder.url('fluentd')).to eq 'http://github.com/fluentd/fluentd'
+
+    #expect { Rubygems::CodeFinder.url('fluentd') }.to raise_error(Rubygems::CodeFinder::RepositoryNotFound)
   end
 end
