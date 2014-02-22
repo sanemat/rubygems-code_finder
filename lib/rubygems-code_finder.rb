@@ -7,6 +7,7 @@ module Rubygems
   module CodeFinder
     extend self
     class RubygemsNotFound < StandardError; end
+    class RepositoryNotFound < StandardError; end
 
     def url(name, github_strict: true)
       conn = Faraday.new 'https://rubygems.org'
@@ -17,7 +18,9 @@ module Rubygems
 
     def parse_response_body(body)
       data = MultiJson.load(body)
-      data['source_code_uri']
+      return data['source_code_uri'] if URI.parse(data['source_code_uri']).host == 'github.com'
+      return data['homepage_uri'] if URI.parse(data['homepage_uri']).host == 'github.com'
+      fail RepositoryNotFound
     end
   end
 end
