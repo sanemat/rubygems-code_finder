@@ -3,7 +3,6 @@ require 'byebug'
 
 describe Rubygems::CodeFinder do
   it '' do
-    Rubygems::CodeFinder.url('tachikoma')
-    fail
+    expect(Rubygems::CodeFinder.url('tachikoma')).to eq 'https://github.com/sanemat/tachikoma'
   end
 end
