@@ -1,4 +1,4 @@
-require "rubygems/code_finder/version"
+require 'rubygems/code_finder/version'
 
 module Rubygems
   module CodeFinder
