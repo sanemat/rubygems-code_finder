@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Rubygems::CodeFinder::VERSION
   spec.authors       = ['sanemat']
   spec.email         = ['o.gata.ken@gmail.com']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ''
+  spec.summary       = %q{Easy to find rubygems' github repository.}
+  spec.description   = %q{Find repos from api.rubygems.org response, gem spec, github search, etc.}
+  spec.homepage      = 'https://github.com/sanemat/rubygems-code_finder'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

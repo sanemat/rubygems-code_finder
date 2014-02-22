@@ -1,4 +1,5 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rubygems-code_finder'
 require 'webmock/rspec'
 
@@ -82,4 +83,3 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 end
-
