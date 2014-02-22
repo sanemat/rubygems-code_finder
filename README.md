@@ -4,7 +4,6 @@
 [![Build Status](https://api.travis-ci.org/sanemat/rubygems-code_finder.png?branch=master)](https://travis-ci.org/sanemat/rubygems-code_finder)
 [![Code Climate](https://codeclimate.com/github/sanemat/rubygems-code_finder.png)](https://codeclimate.com/github/sanemat/rubygems-code_finder)
 [![Coverage Status](https://coveralls.io/repos/sanemat/rubygems-code_finder/badge.png?branch=master)](https://coveralls.io/r/sanemat/rubygems-code_finder)
-[![Dependency Status](https://gemnasium.com/sanemat/rubygems-code_finder.png)](https://gemnasium.com/sanemat/rubygems-code_finder)
 
 ## Installation
 
