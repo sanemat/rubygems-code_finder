@@ -23,7 +23,7 @@ module Rubygems
       return data['homepage_uri'] if data['homepage_uri'] && URI.parse(data['homepage_uri']).host == 'github.com'
 
       res = Octokit.search_repositories data['name']
-      return ('https://github.com/' + res.items.first.full_name) if res.items.count >= 1
+      return 'https://github.com/' + res.items.first.full_name if res.items.count >= 1
       fail RepositoryNotFound
     end
   end
