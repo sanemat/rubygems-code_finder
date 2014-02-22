@@ -26,11 +26,8 @@ describe Rubygems::CodeFinder do
     stub_request(:get, 'https://rubygems.org/api/v1/gems/fluentd.json').
       to_return(status: 200, body: File.new('./spec/fixtures/fluentd.json'), headers: {})
     stub_request(:get, 'https://api.github.com/search/repositories?q=fluentd').
-      with(:headers => {'Accept'=>'application/vnd.github.beta+json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Octokit Ruby Gem 2.7.1'}).
-      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=fluentd'), headers: {})
+      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=fluentd'), headers: { content_type: 'application/json; charset=utf-8'})
 
-    expect(Rubygems::CodeFinder.url('fluentd')).to eq 'http://github.com/fluentd/fluentd'
-
-    #expect { Rubygems::CodeFinder.url('fluentd') }.to raise_error(Rubygems::CodeFinder::RepositoryNotFound)
+    expect(Rubygems::CodeFinder.url('fluentd')).to eq 'https://github.com/fluent/fluentd'
   end
 end
