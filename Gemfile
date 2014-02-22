@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'oj'
-gem 'byebug'
 
 group :development, :test do
   gem 'coveralls', require: false
+  gem 'byebug'
 end
