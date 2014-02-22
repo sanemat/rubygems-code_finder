@@ -18,8 +18,8 @@ module Rubygems
 
     def parse_response_body(body)
       data = MultiJson.load(body)
-      return data['source_code_uri'] if URI.parse(data['source_code_uri']).host == 'github.com'
-      return data['homepage_uri'] if URI.parse(data['homepage_uri']).host == 'github.com'
+      return data['source_code_uri'] if data['source_code_uri'] && URI.parse(data['source_code_uri']).host == 'github.com'
+      return data['homepage_uri'] if data['homepage_uri'] && URI.parse(data['homepage_uri']).host == 'github.com'
       fail RepositoryNotFound
     end
   end
