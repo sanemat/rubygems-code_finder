@@ -21,17 +21,24 @@ Or install it yourself as:
 
 ## Usage
 
-```ruby
-[3] pry(main)> Rubygems::CodeFinder.url 'tachikoma'
+```irb
+irb(main):001:0> require 'rubygems-code_finder'
+=> true
+irb(main):002:0> Rubygems::CodeFinder.url 'tachikoma'
 => "https://github.com/sanemat/tachikoma"
-[4] pry(main)> Rubygems::CodeFinder.url 'invalid'
+irb(main):003:0> Rubygems::CodeFinder.url 'invalid'
 Rubygems::CodeFinder::RubygemsNotFound: Rubygems::CodeFinder::RubygemsNotFound
-from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:15:in `url'
-[5] pry(main)> Rubygems::CodeFinder.url 'mm-devise'
+        from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:15:in `url'
+        from (irb):3
+        from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/bin/irb:11:in `<main>'
+irb(main):004:0> Rubygems::CodeFinder.url 'mm-devise'
 => "http://github.com/kristianmandrup/mm-devise"
-[6] pry(main)> Rubygems::CodeFinder.url 'fluentd'
+irb(main):005:0> Rubygems::CodeFinder.url 'fluentd'
 Rubygems::CodeFinder::RepositoryNotFound: Rubygems::CodeFinder::RepositoryNotFound
-from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:23:in `parse_response_body'
+        from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:23:in `parse_response_body'
+        from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/bundler/gems/rubygems-code_finder-9fdb9327350d/lib/rubygems-code_finder.rb:16:in `url'
+        from (irb):5
+        from /Users/sane/.anyenv/envs/rbenv/versions/2.1.0/bin/irb:11:in `<main>'
 ```
 
 ## Contributing
