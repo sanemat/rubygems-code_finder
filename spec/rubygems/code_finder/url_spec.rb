@@ -1,4 +1,3 @@
-require_relative '../../spec_helper'
 require 'byebug' if RUBY_VERSION >= '2'
 
 describe Rubygems::CodeFinder do
