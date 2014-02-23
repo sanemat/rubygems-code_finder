@@ -1,5 +1,7 @@
 ## 0.0.4
   Features:
+  
+  - Add ruby1.9.3 support (#5, @sanemat)
 
 ## 0.0.3 (2014-02-23)
   Features:
