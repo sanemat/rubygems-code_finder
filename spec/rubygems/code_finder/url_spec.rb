@@ -26,7 +26,7 @@ describe Rubygems::CodeFinder do
     stub_request(:get, 'https://rubygems.org/api/v1/gems/fluentd.json').
       to_return(status: 200, body: File.new('./spec/fixtures/fluentd.json'), headers: {})
     stub_request(:get, 'https://api.github.com/search/repositories?q=fluentd').
-      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=fluentd'), headers: { content_type: 'application/json; charset=utf-8'})
+      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=fluentd'), headers: { content_type: 'application/json; charset=utf-8' })
 
     expect(Rubygems::CodeFinder.url('fluentd')).to eq 'https://github.com/fluent/fluentd'
   end
@@ -35,7 +35,7 @@ describe Rubygems::CodeFinder do
     stub_request(:get, 'https://rubygems.org/api/v1/gems/fluentd.json').
       to_return(status: 200, body: File.new('./spec/fixtures/fluentd.json'), headers: {})
     stub_request(:get, 'https://api.github.com/search/repositories?q=fluentd').
-      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=reposnotfound'), headers: { content_type: 'application/json; charset=utf-8'})
+      to_return(status: 200, body: File.new('./spec/fixtures/repositories?q=reposnotfound'), headers: { content_type: 'application/json; charset=utf-8' })
 
     expect { Rubygems::CodeFinder.url('fluentd') }.to raise_error(Rubygems::CodeFinder::RepositoryNotFound)
   end

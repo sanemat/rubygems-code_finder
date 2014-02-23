@@ -14,15 +14,22 @@ module Rubygems
       conn = Faraday.new 'https://rubygems.org'
       response = conn.get('/api/v1/gems/' + name + '.json')
       fail RubygemsNotFound unless response.status == 200
-      parse_response_body(response.body)
+      begin
+        parse_response_body(response.body)
+      rescue RepositoryNotFound => e
+        search_github(name)
+      end
     end
 
     def parse_response_body(body)
       data = MultiJson.load(body)
       return data['source_code_uri'] if data['source_code_uri'] && URI.parse(data['source_code_uri']).host == 'github.com'
       return data['homepage_uri'] if data['homepage_uri'] && URI.parse(data['homepage_uri']).host == 'github.com'
+      fail RepositoryNotFound
+    end
 
-      res = Octokit.search_repositories data['name']
+    def search_github(name)
+      res = Octokit.search_repositories name
       return 'https://github.com/' + res.items.first.full_name if res.items.count >= 1
       fail RepositoryNotFound
     end
