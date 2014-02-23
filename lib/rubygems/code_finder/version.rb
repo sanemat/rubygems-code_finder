@@ -1,5 +1,5 @@
 module Rubygems
   module CodeFinder
-    VERSION = '0.0.4.beta'
+    VERSION = '0.0.4'
   end
 end
