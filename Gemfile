@@ -7,5 +7,5 @@ gem 'oj'
 
 group :development, :test do
   gem 'coveralls', require: false
-  gem 'byebug'
+  gem 'byebug' if RUBY_VERSION >= '2'
 end
