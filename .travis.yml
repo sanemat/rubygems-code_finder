@@ -6,3 +6,6 @@ rvm:
 branches:
   only:
     - master
+notifications:
+  email:
+    - ogataken@gmail.com
