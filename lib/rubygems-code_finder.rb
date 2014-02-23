@@ -10,7 +10,8 @@ module Rubygems
     class RubygemsNotFound < StandardError; end
     class RepositoryNotFound < StandardError; end
 
-    def url(name, github_strict: true)
+    def url(name, options = {})
+      github_strict = options[:github_strict] || true
       conn = Faraday.new 'https://rubygems.org'
       response = conn.get('/api/v1/gems/' + name + '.json')
       fail RubygemsNotFound unless response.status == 200
