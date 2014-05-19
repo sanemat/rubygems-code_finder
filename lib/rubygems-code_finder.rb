@@ -11,13 +11,12 @@ module Rubygems
     class RepositoryNotFound < StandardError; end
 
     def url(name, options = {})
-      github_strict = options[:github_strict] || true
       conn = Faraday.new 'https://rubygems.org'
       response = conn.get('/api/v1/gems/' + name + '.json')
       fail RubygemsNotFound unless response.status == 200
       begin
         parse_response_body(response.body)
-      rescue RepositoryNotFound => e
+      rescue RepositoryNotFound
         search_github(name)
       end
     end
