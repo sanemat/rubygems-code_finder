@@ -16,7 +16,7 @@ module Rubygems
       fail RubygemsNotFound unless response.status == 200
       begin
         parse_response_body(response.body)
-      rescue RepositoryNotFound => e
+      rescue RepositoryNotFound
         search_github(name)
       end
     end
