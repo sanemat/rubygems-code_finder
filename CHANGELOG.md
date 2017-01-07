@@ -1,3 +1,8 @@
+## 1.0.0(2017-01-08)
+
+- Drop support for ruby 1.9
+
+
 ## 0.0.5(2015-12-06)
 
 (no changes)
